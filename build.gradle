@@ -12,6 +12,8 @@ buildscript {
 
 apply plugin: 'groovy'
 apply plugin: 'spring-boot'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
 
 jar {
     baseName = 'bootiful-cas-client-demo'
