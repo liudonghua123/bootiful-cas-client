@@ -14,6 +14,44 @@ apply plugin: 'groovy'
 apply plugin: 'spring-boot'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
+apply plugin: 'maven'
+
+group = 'com.liudonghua.demo'
+// artifactId is taken by default, from folder name
+version = '0.1-SNAPSHOT'
+
+// https://codexplo.wordpress.com/2014/07/20/gradle-to-maven-conversion-and-vice-versa/
+// http://stackoverflow.com/questions/12888490/gradle-build-gradle-to-maven-pom-xml
+task writeNewPom << {
+    pom {
+        project {
+            inceptionYear '2017'
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+        }
+//        build {
+//            plugins {
+//                plugin {
+//                    groupId 'org.springframework.boot'
+//                    artifactId 'spring-boot-maven-plugin'
+//                }
+//                plugin {
+//                    groupId 'org.apache.maven.plugins'
+//                    artifactId 'maven-compiler-plugin'
+//                    configuration{
+//                        source '1.8'
+//                        target '1.8'
+//                    }
+//                }
+//            }
+//        }
+    }.writeTo("pom.xml")
+}
 
 jar {
     baseName = 'bootiful-cas-client-demo'
